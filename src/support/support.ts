@@ -1,6 +1,10 @@
 
 
-let id = 0;
-export const createId = () : number=>{
-    return id++;
+
+export const createId = ()=>{
+    let id = 1;
+    const create = () => {
+        return id++
+    }
+    create()
 }
