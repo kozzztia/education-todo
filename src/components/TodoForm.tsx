@@ -24,7 +24,11 @@ const TodoForm = ({inputValue , setInputValue , setTodos ,todos}:todoFormTypes) 
                 }}
                 value={inputValue}
             />
-            <button type='submit'>Add todo</button>
+            <button
+                disabled={inputValue.length < 5}
+                type='submit'>
+                Add todo
+            </button>
         </form>
     );
 };

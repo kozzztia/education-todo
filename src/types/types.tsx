@@ -15,3 +15,4 @@ export type setTodosType = {
 export type todoListTypes = {
     todos: setTodosType[];
 }
+
