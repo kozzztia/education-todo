@@ -1,10 +1,7 @@
 
+let id = 0;
 
-
-export const createId = ()=>{
-    let id = 1;
-    const create = () => {
-        return id++
-    }
-    create()
+export const createId = ()=> {
+        id = id +1
+        return id
 }

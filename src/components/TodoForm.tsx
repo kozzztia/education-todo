@@ -1,11 +1,19 @@
 import React from 'react';
 import {todoFormTypes} from "../types/types";
+import {createId} from "../support/support";
+import {setTodosType} from "../types/types"
 
-const TodoForm = ({inputValue , setInputValue , setTodos}:todoFormTypes) => {
+const TodoForm = ({inputValue , setInputValue , setTodos ,todos}:todoFormTypes) => {
     return (
         <form
             onSubmit={(e)=>{
                 e.preventDefault()
+                const newTodo : setTodosType = {
+                    id:createId(),
+                    title:inputValue,
+                    done:false,
+                }
+                setTodos((prev:todoFormTypes[])=>[...prev, newTodo])
                 setInputValue("")
             }}
         >
@@ -15,7 +23,6 @@ const TodoForm = ({inputValue , setInputValue , setTodos}:todoFormTypes) => {
                     setInputValue(e.target.value)
                 }}
                 value={inputValue}
-
             />
             <button type='submit'>Add todo</button>
         </form>
