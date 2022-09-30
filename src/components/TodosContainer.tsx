@@ -6,7 +6,11 @@ import {setTodosType} from "../types/types"
 
 const TodosContainer = () => {
     const [inputValue , setInputValue] = useState<string>("");
-    const [todos , setTodos] = useState<setTodosType[] | []>([]);
+    const [todos , setTodos] = useState<setTodosType[] | []>([
+        {id:1, title:"one", done:false},
+        {id:2, title:"two", done:false},
+        {id:3, title:"three", done:false},
+    ]);
     return (
         <>
             <TodoForm

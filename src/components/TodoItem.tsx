@@ -5,6 +5,7 @@ function TodoItem ({id,title,done}:setTodosType) {
     const [change , setChange] = useState<boolean>(false)
     return (
         <li key = {id}
+            className="todoItem"
             style={change?
                 {color:'red'}
                 :
@@ -13,8 +14,7 @@ function TodoItem ({id,title,done}:setTodosType) {
                 setChange(prev=>!prev)
             }}
         >
-            {title}
-
+            {id}: {title}
         </li>
     );
 };

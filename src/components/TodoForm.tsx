@@ -5,17 +5,9 @@ import {setTodosType} from "../types/types"
 
 const TodoForm = ({inputValue , setInputValue , setTodos ,todos}:todoFormTypes) => {
     return (
-        <form
-            onSubmit={(e)=>{
-                e.preventDefault()
-                const newTodo : setTodosType = {
-                    id:createId(),
-                    title:inputValue,
-                    done:false,
-                }
-                setTodos((prev:todoFormTypes[])=>[...prev, newTodo])
-                setInputValue("")
-            }}
+        <div
+            className="todoForm"
+
         >
             <input
                 type="text"
@@ -25,11 +17,21 @@ const TodoForm = ({inputValue , setInputValue , setTodos ,todos}:todoFormTypes) 
                 value={inputValue}
             />
             <button
+                onClick={(e)=>{
+                e.preventDefault()
+                const newTodo : setTodosType = {
+                    id:createId(),
+                    title:inputValue,
+                    done:false,
+                }
+                setTodos((prev:todoFormTypes[])=>[...prev, newTodo])
+                setInputValue("")
+            }}
                 disabled={inputValue.length < 5}
                 type='submit'>
                 Add todo
             </button>
-        </form>
+        </div>
     );
 };
 

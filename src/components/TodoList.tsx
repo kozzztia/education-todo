@@ -4,7 +4,7 @@ import TodoItem from "../components/TodoItem"
 
 function TodoList  ({todos} :todoListTypes)  {
     return (
-        <ul>
+        <ul className="todoList">
             {
                 todos.map(item=>
                     <TodoItem
