@@ -1,29 +1,35 @@
-import React, {useState} from 'react';
-
-
-
-
-
+import React, {useContext} from 'react';
+import {TodoContext} from "../App";
+import {createId} from "../support/support";
 
 
 
 const TodoForm = () => {
-    const [inputValue , setInputValue] = useState <string> ("");
+    const {...context} = useContext(TodoContext)
     return (
         <form
             onSubmit={(e)=>{
                 e.preventDefault()
-                console.log(inputValue)
-                setInputValue("")
+                const newTodo = {
+                    id: createId(),
+                    title: context.inputValue,
+                    doneValue: false,
+                }
+                context.setTodos([...context.todos , newTodo])
+                console.log(context.todos)
+                context.setInputValue("")
             }}
         >
             <input type="text"
-                    onChange={(e)=>{
-                        setInputValue(e.target.value)
-                    }}
-                   value={inputValue}
+                   onChange={(e)=>{
+                        context.setInputValue(e.target.value)
+                   }}
+                   value={context.inputValue}
             />
-            <button type="submit">Add new task</button>
+            <button
+                type="submit"
+                disabled={context.inputValue.length <5}
+            >Add new task</button>
         </form>
     );
 };
