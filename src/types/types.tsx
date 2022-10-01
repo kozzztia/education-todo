@@ -12,7 +12,9 @@ export type setTodosType = {
     title:string,
     done:boolean,
 }
-export type todoListTypes = {
-    todos: setTodosType[];
-}
 
+export type contextType ={
+    doneValue : boolean,
+    text : string,
+
+}

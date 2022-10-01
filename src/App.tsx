@@ -1,13 +1,18 @@
 import React, {createContext, useState} from 'react';
 import './App.css';
 import TodoListComponent from "./components/TodoListComponent";
-export const TodoContext = createContext<boolean | null>(false)
+import {contextType} from "./types/types";
 
+
+export const TodoContext = createContext<contextType | null>(null)
 function App() {
   const [doneValue, setDoneValue] = useState<boolean>(false)
-
+    const context : contextType= {
+        doneValue,
+        text : "string",
+    }
   return (
-      <TodoContext.Provider value={doneValue}>
+      <TodoContext.Provider value ={context}>
         <div className="App">
 
           <TodoListComponent/>
