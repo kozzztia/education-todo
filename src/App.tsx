@@ -1,15 +1,28 @@
-import React from 'react';
+import React, {createContext, useState} from 'react';
 import './App.css';
-import TodosContainer from "./components/TodosContainer";
-
-
-
+import TodoListComponent from "./components/TodoListComponent";
+export const TodoContext = createContext<boolean | null>(false)
 
 function App() {
+  const [doneValue, setDoneValue] = useState<boolean>(false)
+
   return (
-    <div className="App">
-      <TodosContainer/>
-    </div>
+      <TodoContext.Provider value={doneValue}>
+        <div className="App">
+
+          <TodoListComponent/>
+
+            <button
+                onClick={(e)=>{
+                    e.preventDefault()
+                    setDoneValue((prevState)=>!prevState)
+                    console.log(doneValue)
+                }}
+            >
+                btn
+            </button>
+        </div>
+      </TodoContext.Provider>
   );
 }
 

@@ -1,37 +1,30 @@
-import React from 'react';
-import {todoFormTypes} from "../types/types";
-import {createId} from "../support/support";
-import {setTodosType} from "../types/types"
+import React, {useState} from 'react';
 
-const TodoForm = ({inputValue , setInputValue , setTodos ,todos}:todoFormTypes) => {
+
+
+
+
+
+
+
+const TodoForm = () => {
+    const [inputValue , setInputValue] = useState <string> ("");
     return (
-        <div
-            className="todoForm"
-
-        >
-            <input
-                type="text"
-                onChange={(e)=>{
-                    setInputValue(e.target.value)
-                }}
-                value={inputValue}
-            />
-            <button
-                onClick={(e)=>{
+        <form
+            onSubmit={(e)=>{
                 e.preventDefault()
-                const newTodo : setTodosType = {
-                    id:createId(),
-                    title:inputValue,
-                    done:false,
-                }
-                setTodos((prev:todoFormTypes[])=>[...prev, newTodo])
+                console.log(inputValue)
                 setInputValue("")
             }}
-                disabled={inputValue.length < 5}
-                type='submit'>
-                Add todo
-            </button>
-        </div>
+        >
+            <input type="text"
+                    onChange={(e)=>{
+                        setInputValue(e.target.value)
+                    }}
+                   value={inputValue}
+            />
+            <button type="submit">Add new task</button>
+        </form>
     );
 };
 

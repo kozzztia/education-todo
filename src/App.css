@@ -4,29 +4,6 @@
     margin:0 auto;
     border:1px solid black;
 }
-.todoForm{
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    font-size: 5px;
-}
-.todoForm>input{
-    width: 100%;
-    padding: 5px;
-    font-size: 20px;
-}
 
-.todoList{
-    width: 100%;
-    list-style-type: none;
-    padding:10px;
-}
-.todoItem{
-    border: 1px solid black;
-    background: #eee;
-    font-size: 20px;
-    position: inherit;
-    overflow: hidden;
-}
 
 
