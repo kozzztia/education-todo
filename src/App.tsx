@@ -1,28 +1,24 @@
-import React, {createContext, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import TodoListComponent from "./components/TodoListComponent";
-import {contextType, todosTypes} from "./types/types";
+import TodoContainer from "./components/TodoContainer";
+import {contextType} from "./types/types";
 
-export const TodoContext = createContext<contextType | null>(null)
+export const Context = React.createContext<[] | contextType>([])
+
+
 
 function App() {
-
-  const [inputValue, setInputValue] = useState<string>("")
-  const [todos, setTodos] = useState<todosTypes[]|[]>([])
-
-    const context : contextType= {
-        text : "TodoList",
+    const [inputValue , setInputValue] = useState<string>("");
+    const context : contextType = {
         inputValue,
         setInputValue,
-        setTodos,
-        todos,
     }
-  return (
-      <TodoContext.Provider value ={context}>
+    return (
+      <Context.Provider value ={context}>
         <div className="App">
-          <TodoListComponent/>
+            <TodoContainer/>
         </div>
-      </TodoContext.Provider>
+      </Context.Provider>
   );
 }
 
